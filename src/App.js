@@ -2,6 +2,8 @@ import './App.css';
 import NewsList from './components/NewsList';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
+
+import Amplify, { API, graphqlOperation } from 'aws-amplify'
 //The App component handles all of the rendering in the browser.
 function App() {
   const [cases, setCases] = useState([]);
