@@ -3,10 +3,12 @@ import NewsList from './components/NewsList';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
-import Amplify, { API, graphqlOperation } from 'aws-amplify'
+//import Amplify, { API, graphqlOperation } from 'aws-amplify'
 //The App component handles all of the rendering in the browser.
+
 function App() {
-  const [cases, setCases] = useState([]);
+  //Be sure to add in the cases const!!
+  const [cases,setCases] = useState([]);
 
   useEffect(() => {
   const getCases = async() =>{
@@ -25,6 +27,7 @@ function App() {
         <li><a href="/app">Home</a></li>
         <li><a href="/news">News</a></li>
         <li><a href="tips.html">Lockdown Tips</a></li>
+        <li><a href="/Posts">Discussions</a></li>
     </ul>
         </nav>
 
@@ -43,6 +46,7 @@ function App() {
 
           {/*Calls the NewsList Component and displays it all from the below tag.*/}
           <NewsList/>
+          
           </body>
        
      
@@ -50,6 +54,9 @@ function App() {
     </div>
   );
 }
+
+
+
 
 
 //Twitter API Key: 1E3fSBGwdSwMQUNCbmrG2lSzt
