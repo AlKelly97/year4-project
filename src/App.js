@@ -1,30 +1,32 @@
+//Importing the necessary dependancies for the project
 import './App.css';
 import NewsList from './components/NewsList';
-import Axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import $ from "jquery"
+import React from 'react'
 
-//import Amplify, { API, graphqlOperation } from 'aws-amplify'
 //The App component handles all of the rendering in the browser.
-
 function App() {
-  //Be sure to add in the cases const!!
-  const [cases,setCases] = useState([]);
 
-  useEffect(() => {
-  const getCases = async() =>{
-    const res2 = await Axios.get('https://covidapi.info/api/v1/country/IRL/latest')
-    setCases(res2.data.cases);
-    console.log(res2)
-    
-};
-    getCases();
-  }, []);
+  //Using Jquery to call and render the API data fro covidAPI. 
+  //Uses a GET request to return Confirmed cases, Recovered and Deaths
+  $.getJSON("https://api.covid19api.com/total/country/IE", function (api) {
+    console.log(api)
+    var Confirmed = api[api.length - 1].Confirmed
+    var Deaths = api[api.length - 1].Deaths;
+    var Recovered = api[api.length - 1].Recovered;
+
+    $(".Confirmed").html('<strong>Confirmed:</strong>' + Confirmed);
+    $(".Deaths").html('<strong>Deaths:</strong>' + Deaths);
+    $(".Recovered").html('<strong>Recovered:</strong>' + Recovered);
+  });
+
+  //Simple HTML content below:
   return (
     <div className="App">
       <header className="App-header">
         <nav>
         <ul>
-        <li><a href="/app">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/news">News</a></li>
         <li><a href="tips.html">Lockdown Tips</a></li>
         <li><a href="/Posts">Discussions</a></li>
@@ -38,11 +40,12 @@ function App() {
           </p>
 
 
-
-          {/*{cases.map(({confirmed, deaths, recovered,}) => (
-                <caseItem   confirmed={confirmed} deaths={deaths} recovered={recovered}     />
-          ))}*/}
-
+<div>
+  <h3>Ireland Case stats</h3>
+        <p class="Confirmed"></p>
+        <p class="Deaths"></p>
+        <p class="Recovered"></p>
+</div>
 
           {/*Calls the NewsList Component and displays it all from the below tag.*/}
           <NewsList/>
@@ -59,8 +62,5 @@ function App() {
 
 
 
-//Twitter API Key: 1E3fSBGwdSwMQUNCbmrG2lSzt
-//Twitter API Secret key: 5M2CKlIBCKEdFOsr753gYYZH5dbEyPF54ZrZ1rb7ghDpFOL4Ua
-//Bearer token: AAAAAAAAAAAAAAAAAAAAAG8nMgEAAAAAgdfN2vq84utsBwnyVaWTskr%2FVu4%3DXPrOd5VUVTBD9yqiFfpwTwHI8lnnp7NMn2UMaaskytvdNQbud1
 
 export default App;

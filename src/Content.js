@@ -107,10 +107,14 @@ render() {
 
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet"></link>
 
-<h3> <a href={`/`}>Home Page
-                </a>    </h3>
-<h3> <a href={`/Posts`}>Return to Posts
-                </a>    </h3>       
+<nav>
+        <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/News">News</a></li>
+        <li><a href="tips.html">Lockdown Tips</a></li>
+        <li><a href="/Posts">Discussions</a></li>
+    </ul>
+        </nav>
          <h3>{this.state.blogs.data.getBlog.name}</h3>
            
         

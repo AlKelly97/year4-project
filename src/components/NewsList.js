@@ -6,19 +6,19 @@ import Axios from 'axios';
 const NewsList = () => {
         const [articles, setArticles] = useState([]);
 
-    useEffect(() => {
-        const getArticles = async () => {
-            //Can add BBC News and NY times to the API account.
-            //Max 100 requests per 24 hours
-            const res = await Axios.get('http://newsapi.org/v2/top-headlines?q=coronavirus&country=ie&category=health&pageSize=10&apiKey=d8e5c413969144569184d0a7433888b8');
-                                        //('http://newsapi.org/v2/everything?q=coronavirus&sources=the-irish-times,bbc-news&apiKey=d8e5c413969144569184d0a7433888b8')
-            setArticles(res.data.articles);   
-            console.log(res)
-        };
+        useEffect(() => {
+            const getArticles = async () => {
+                //Can add BBC News and NY times to the API account.
+                //Max 100 requests per 24 hours
+                const res = await Axios.get('http://newsapi.org/v2/top-headlines?q=Coronavirus&country=IE&category=health&pageSize=4&apiKey=d8e5c413969144569184d0a7433888b8');
+                //('http://newsapi.org/v2/everything?q=coronavirus&sources=the-irish-times,bbc-news&apiKey=d8e5c413969144569184d0a7433888b8')
+                setArticles(res.data.articles);
+                console.log(res)
+            };
 
-        getArticles();
-        
-    }, []);
+            getArticles();
+
+        }, []);
 //Mapping the elements "title, description, url, urltoImage" to elements in the browser
     return( 
         <div>

@@ -12,6 +12,7 @@ import Amplify from "aws-amplify";
 import awsExports from "./aws-exports";
 import Posts from './Posts'
 import Content from './Content'
+import News from './News'
 
 Amplify.configure(awsExports);
 
@@ -22,6 +23,9 @@ const routing =(
           <Route path="/" exact component={App} />
           <Route path={"/Posts"} component={Posts} />
           <Route path={"/Content/:account"} component={Content} />
+          <Route path={"/News"} component={News} />
+
+
       </div>
       
 
